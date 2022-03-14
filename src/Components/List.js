@@ -2,15 +2,6 @@ import React,  {useState} from 'react'
 
 export default function List({todoData, setTodoData}) {
 
-    const btnStyle = {
-        color: "#fff",
-        border: "none",
-        padding: "5px 9px",
-        borderRadius: "50%",
-        margin:"5px",
-        cursor: "pointer",
-        float: "right",
-    };
 
     const [value, setValue] = useState("");
 
@@ -80,10 +71,11 @@ export default function List({todoData, setTodoData}) {
                 {   
                     data.mod ?
 
-                    <form style= {{display:'flex'}} onSubmit={handelSubmit(data.id)} >
+                    <form className='flex w-full' onSubmit={handelSubmit(data.id)} >
                         <input
                             type="text"
                             name="value"
+                            className='w-full px-3 py-2 mr-4 text-gray-500 border rounded shadow'
                             style={{flex:'10', padding:'5px'}}
                             placeholder={data.title}
                             value={value}
@@ -92,21 +84,25 @@ export default function List({todoData, setTodoData}) {
                         <input
                             type="submit"
                             value="+"
-                            className="수정"
+                            className="p-2 text-blue-400 border-2 border-blue-400 rounded hover:text-white hover:bg-blue-200"
                             style={{flex:'1'}}
                         />
                     </form> 
                     
-                    :<div>
+                    :<div className='className = "flex items-center justify-between w-full px-4 py-6 my-2 text-gray-500 rounded bg-gray-100 "'>
                         <input
                             type = "checkbox"
                             onChange={() => handelCompletedChange(data.id) }
                             defaultChecked={false}
                         />
-                        {" "}{data.title}
-                    
-                        <button style={btnStyle} onClick={()=> handelDelClick(data.id)}> x </button>
-                        <button style={btnStyle} onClick={()=> handelModClick(data.id)}> + </button>
+                        <span className={data.completed ? "line-through" : "undefined"}>
+                            {" "}{data.title}
+                        </span>
+
+                        <button className='px-4 py-2 mx-2  float-right bg-gray-300 rounded-xl w-10 h-10 items-center'
+                        onClick={()=> handelDelClick(data.id)}> x </button>
+                        <button  className='px-4 py-2 mx-2 float-right bg-gray-300 rounded-xl w-10 h-10 items-center'
+                        onClick={()=> handelModClick(data.id)}> + </button>
                     </div> 
                 }
 

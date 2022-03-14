@@ -38,11 +38,11 @@ export default function App() {
   //setTodoData(window.localStorage.getItem("todoData"));
 
   return (
-    <div className="container">
-      <div className="todoBlock">
+    <div className="flex items-center justify-center w-screen h-screen bg-blue-200 ">
+      <div className="w-full p-6 m-4 bg-white rounded shadow lg:w-3/4 lg:max-w-lg" >
         <Title todoData={todoData} setTodoData={setTodoData}/>
         <List todoData={todoData} setTodoData={setTodoData}/>
-        <Form handelSubmit={handelSubmit} value={value} setValue={setValue}/>
+        <Form handelSubmit={handelSubmit} value={value} setValue={setValue}/>    
       </div>
     </div>
   );
