@@ -6,7 +6,11 @@ import Title from "./Components/Title";
 
 export default function App() {
 
-  const [todoData, setTodoData] = useState(() => JSON.parse(window.localStorage.getItem("todoDataSave")));
+  if(window.localStorage.getItem("todoDataSave") == null){
+    
+    window.localStorage.setItem("todoDataSave", JSON.stringify([]));
+  }
+  const  [todoData, setTodoData] = useState(() => JSON.parse(window.localStorage.getItem("todoDataSave")));
   const [value, setValue] = useState("");
 
   useEffect(() => {
